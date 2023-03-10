@@ -28,22 +28,21 @@
                 android:fontFamily="@font/sanchez"
                 tools:text="@tools:sample/us_zipcodes" />
 
-            <View
+            <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="wrap_content"
                 android:background="@color/divider_grey" />
 
             <TextView
                 android:id="@+id/monster_description"
-                style="@style/Widget.App.TextView.MonsterDetail"
+                style="@style/Widget.App.TextView.MonsterDetail.Big"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textAppearance="?textAppearanceHeadline6"
                 tools:text="@tools:sample/lorem/random" />
 
-            <View
+            <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:layout_height="wrap_content"
                 android:background="@color/divider_grey" />
 
             <ImageView

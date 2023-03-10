@@ -11,7 +11,6 @@ import com.carles.hyrule.data.mapper.MonstersMapper
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class HyruleLocalDatasourceAlt @Inject constructor(
     private val dao: MonsterDao,

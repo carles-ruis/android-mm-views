@@ -61,7 +61,7 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
                 }
                 ERROR -> {
                     hideProgress()
-                    navigate.toErrorDialog(result.message)
+                    navigate.toErrorDialog(result.message, navController)
                 }
                 LOADING -> showProgress()
             }

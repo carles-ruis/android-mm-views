@@ -4,8 +4,8 @@ import javax.inject.Qualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class HyruleRepositoryAltQualifier()
+annotation class HyruleRepositoryAltQualifier
 
 @Qualifier
 @Retention(AnnotationRetention.BINARY)
-annotation class HyruleRepositoryQualifier()
+annotation class HyruleRepositoryQualifier

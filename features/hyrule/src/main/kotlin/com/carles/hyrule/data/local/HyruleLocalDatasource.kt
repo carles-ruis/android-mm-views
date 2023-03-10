@@ -7,7 +7,6 @@ import com.carles.common.data.ItemNotCachedException
 import io.reactivex.Completable
 import io.reactivex.Single
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class HyruleLocalDatasource @Inject constructor(
     private val dao: MonsterDao,

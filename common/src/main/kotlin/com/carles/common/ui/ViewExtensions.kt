@@ -17,9 +17,11 @@ inline fun Fragment.consumeMenuClick(f: () -> Unit): Boolean {
 
 fun AppCompatActivity.getStrings(ids: List<Int>) = ids.map { getString(it) }.toTypedArray()
 
-fun Int.toPx() = this * Resources.getSystem().displayMetrics.density
+val Int.px
+    get() = (this * Resources.getSystem().displayMetrics.density).toInt()
 
-fun Int.toDp() = this / Resources.getSystem().displayMetrics.density
+val Int.dp
+    get() = (this / Resources.getSystem().displayMetrics.density).toInt()
 
 fun View.setDebounceClickListener(action: () -> Unit) {
     setDebounceClickListener(action, DEFAULT_DEBOUNCE_TIME)

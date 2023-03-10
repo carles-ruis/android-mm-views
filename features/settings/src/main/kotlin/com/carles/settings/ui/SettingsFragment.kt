@@ -8,7 +8,6 @@ import androidx.preference.PreferenceFragmentCompat
 import com.carles.common.databinding.FragmentSettingsBinding
 import com.carles.settings.R
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class SettingsFragment : PreferenceFragmentCompat() {

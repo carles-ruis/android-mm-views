@@ -5,7 +5,6 @@ import com.carles.common.data.CacheKey
 import com.carles.hyrule.data.local.HyruleLocalDatasourceAlt
 import com.carles.hyrule.data.remote.HyruleRemoteDatasourceAlt
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class HyruleDatasourceFactoryAlt @Inject constructor(
     private val localDatasource: HyruleLocalDatasourceAlt,

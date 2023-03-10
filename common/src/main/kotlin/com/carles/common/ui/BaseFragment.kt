@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
 import com.carles.common.Navigate
 import javax.inject.Inject
@@ -17,6 +18,11 @@ abstract class BaseFragment<T : ViewBinding> : Fragment() {
 
     private var _binding: T? = null
     protected val binding get() = _binding!!
+
+    protected val navController by lazy {
+        Navigation.findNavController(requireView())
+    }
+
     protected abstract val progress: View?
 
     abstract fun setBinding(inflater: LayoutInflater, container: ViewGroup?): T

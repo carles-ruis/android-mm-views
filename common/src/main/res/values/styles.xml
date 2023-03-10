@@ -1,14 +1,24 @@
 <resources>
 
-    <style name="appToolbarStyle" parent="Widget.MaterialComponents.Toolbar.Primary" />
+    <style name="Widget.App.Toolbar" parent="Widget.Material3.Toolbar.Surface">
+        <item name="titleTextAppearance">?textAppearanceTitleLarge</item>
+    </style>
 
     <style name="Widget.App.TextView" parent="Widget.MaterialComponents.TextView">
-        <item name="android:textAppearance">?textAppearanceBody1</item>
+        <item name="android:textAppearance">?textAppearanceBodyLarge</item>
+    </style>
+
+    <style name="Widget.App.TextView.MonsterItem">
+        <item name="android:textAppearance">?textAppearanceTitleMedium</item>
     </style>
 
     <style name="Widget.App.TextView.MonsterDetail">
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingBottom">8dp</item>
+    </style>
+
+    <style name="Widget.App.TextView.MonsterDetail.Big">
+        <item name="android:textAppearance">?textAppearanceHeadlineSmall</item>
     </style>
 
     <style name="PreferenceTheme.App" parent="PreferenceThemeOverlay">

@@ -2,11 +2,11 @@
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/monster_title"
+    style="@style/Widget.App.TextView.MonsterItem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:ellipsize="end"
     android:maxLines="1"
     android:padding="16dp"
-    android:textAppearance="?textAppearanceSubtitle1"
     tools:showIn="@layout/fragment_monsters"
     tools:text="@tools:sample/cities" />

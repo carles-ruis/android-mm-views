@@ -3,18 +3,20 @@
     <style name="AppTheme" parent="Base.AppTheme" />
 
     <!-- Base application theme. -->
-    <style name="Base.AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Base.AppTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/main_blue</item>
-        <item name="colorPrimaryVariant">@color/variant_blue</item>
-        <item name="colorPrimaryDark">@color/variant_blue</item>
+        <item name="colorPrimaryContainer">@color/container_blue</item>
         <item name="colorOnPrimary">@android:color/white</item>
         <item name="colorSecondary">@color/main_cyan</item>
-        <item name="colorSecondaryVariant">@color/variant_cyan</item>
+        <item name="colorSecondaryContainer">@color/container_cyan</item>
         <item name="colorOnSecondary">@android:color/white</item>
+        <item name="colorSurface">@color/light_grey</item>
 
         <item name="android:fontFamily">@font/sanchez</item>
+
         <item name="android:textViewStyle">@style/Widget.App.TextView</item>
+        <item name="toolbarStyle">@style/Widget.App.Toolbar</item>
         <item name="preferenceTheme">@style/PreferenceTheme.App</item>
     </style>
 

@@ -65,6 +65,7 @@ dependencies {
     implementation(Dependence.navigation)
     implementation(Dependence.navigationFragment)
     implementation(Dependence.fragment)
+    implementation(Dependence.material)
     implementation(Dependence.hilt)
     kapt(Dependence.hiltCompiler)
 

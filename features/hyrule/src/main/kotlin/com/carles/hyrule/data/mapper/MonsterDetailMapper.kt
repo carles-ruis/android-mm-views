@@ -4,7 +4,6 @@ import com.carles.hyrule.MonsterDetail
 import com.carles.hyrule.data.local.MonsterDetailEntity
 import com.carles.hyrule.data.remote.MonsterDetailResponseDto
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class MonsterDetailMapper @Inject constructor() {
 

@@ -14,14 +14,16 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.carles.common.ui.BaseFragment
 import com.carles.common.ui.ERROR
 import com.carles.common.ui.LOADING
 import com.carles.common.ui.SUCCESS
+import com.carles.common.ui.dp
 import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonstersBinding
 import com.carles.hyrule.ui.ErrorDialogFragment.Companion.REQUEST_CODE_RETRY
+import com.google.android.material.divider.MaterialDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,9 +46,14 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupMenu()
-        binding.monstersRecycler.addItemDecoration(DividerItemDecoration(activity, DividerItemDecoration.VERTICAL))
+        binding.monstersRecycler.addItemDecoration(
+            MaterialDividerItemDecoration(requireContext(), LinearLayoutManager.VERTICAL).apply {
+                dividerInsetStart = 16.dp
+                dividerInsetEnd = 16.dp
+            }
+        )
         binding.monstersRecycler.adapter = MonstersAdapter { monster ->
-            navigate.toMonsterDetail(monster.id)
+            navigate.toMonsterDetail(monster.id, navController)
         }
         observeMonsters()
     }
@@ -78,7 +85,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
                 }
                 ERROR -> {
                     hideProgress()
-                    navigate.toErrorDialog(result.message)
+                    navigate.toErrorDialog(result.message, navController)
                 }
                 LOADING -> showProgress()
             }
