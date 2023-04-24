@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt">
+
+    <aapt:attr name="android:drawable">
+        <vector
+            android:width="24dp"
+            android:height="24dp"
+            android:viewportWidth="100"
+            android:viewportHeight="100">
+            <group
+                android:name="check_rotate"
+                android:pivotX="50"
+                android:pivotY="50">
+                <path
+                    android:name="check_morph"
+                    android:pathData="@string/ic_check_vector_path"
+                    android:strokeWidth="8"
+                    android:strokeColor="#ff000000"
+                    android:strokeLineCap="round" />
+            </group>
+        </vector>
+    </aapt:attr>
+
+    <target android:name="check_morph">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="@android:integer/config_longAnimTime"
+                android:propertyName="pathData"
+                android:valueFrom="@string/ic_check_vector_path"
+                android:valueTo="@string/ic_add_vector_path"
+                android:valueType="pathType" />
+        </aapt:attr>
+    </target>
+
+    <target android:name="check_rotate">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:duration="@android:integer/config_longAnimTime"
+                android:propertyName="rotation"
+                android:valueFrom="180"
+                android:valueTo="0"
+                android:valueType="floatType" />
+        </aapt:attr>
+    </target>
+</animated-vector>

@@ -6,6 +6,10 @@
 
     <!-- non translatable strings -->
     <string name="navigation_settings_deeplink" translatable="false">carles://settings</string>
+
+    <string name="ic_add_vector_path" translatable="false">M50 20,L50 80,M20 50,L80 50</string>
+    <string name="ic_check_vector_path" translatable="false">M60 25,L75 45,M25 75,L60 25</string>
+
     <string name="preferences_cache_key" translatable="false">preferences_cache_key</string>
     <string-array name="preferences_cache_values" translatable="false">
         <item>0</item>
@@ -36,9 +40,5 @@
         <item>@string/preferences_cache_ten_minutes</item>
         <item>@string/preferences_cache_never</item>
     </string-array>
-
-
-
-
 
 </resources>

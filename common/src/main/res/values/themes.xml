@@ -1,9 +1,15 @@
 <resources>
 
-    <style name="AppTheme" parent="Base.AppTheme" />
+    <style name="SplashAppTheme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/light_grey</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_check_animated_vector</item>
+        <item name="postSplashScreenTheme">@style/MaterialAppTheme</item>
+    </style>
+
+    <style name="MaterialAppTheme" parent="BaseAppTheme" />
 
     <!-- Base application theme. -->
-    <style name="Base.AppTheme" parent="Theme.Material3.Light.NoActionBar">
+    <style name="BaseAppTheme" parent="Theme.Material3.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/main_blue</item>
         <item name="colorPrimaryContainer">@color/container_blue</item>

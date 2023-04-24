@@ -22,6 +22,7 @@ object Version {
     val preference = "1.2.0"
     val navigation = "2.6.0-alpha05"
     val fragment = "1.6.0-alpha05"
+    val splashScreen = "1.0.1"
     val retrofit = "2.9.0"
     val loggingInterceptor = "4.10.0"
     val rxJava = "2.2.21"
@@ -54,6 +55,7 @@ object Dependence {
     val navigation =  "androidx.navigation:navigation-ui-ktx:${Version.navigation}"
     val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Version.navigation}"
     val fragment = "androidx.fragment:fragment-ktx:${Version.fragment}"
+    val splashScreen = "androidx.core:core-splashscreen:${Version.splashScreen}"
 
     val rxJava = "io.reactivex.rxjava2:rxjava:${Version.rxJava}"
     val rxAndroid = "io.reactivex.rxjava2:rxandroid:${Version.rxAndroid}"
