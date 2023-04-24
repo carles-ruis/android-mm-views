@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/settings_destination"
+        android:id="@+id/settings_graph"
         android:icon="@drawable/ic_settings_white_24dp"
         android:orderInCategory="1"
         android:title="@string/monsters_menu_settings"

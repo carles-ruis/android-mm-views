@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/nav_graph"
+    android:id="@+id/hyrule_graph"
     app:startDestination="@id/monsters_destination">
 
     <fragment
@@ -42,16 +42,11 @@
             app:argType="boolean" />
     </dialog>
 
-    <fragment
-        android:id="@+id/settings_destination"
-        android:name="com.carles.settings.ui.SettingsFragment"
-        android:label="@string/settings"
-        tools:layout="@layout/fragment_settings" />
-
     <action
         android:id="@+id/toErrorDialog"
         app:destination="@id/error_dialog_destination" />
     <action
         android:id="@+id/toMonsterDetail"
         app:destination="@id/monster_detail_destination" />
+
 </navigation>

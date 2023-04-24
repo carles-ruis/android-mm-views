@@ -20,6 +20,8 @@ import com.carles.common.ui.ERROR
 import com.carles.common.ui.LOADING
 import com.carles.common.ui.SUCCESS
 import com.carles.common.ui.dp
+import com.carles.common.ui.safeNavigate
+import com.carles.hyrule.HyruleGraphDirections
 import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonstersBinding
 import com.carles.hyrule.ui.ErrorDialogFragment.Companion.REQUEST_CODE_RETRY
@@ -53,7 +55,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
             }
         )
         binding.monstersRecycler.adapter = MonstersAdapter { monster ->
-            navigate.toMonsterDetail(monster.id, navController)
+            navController.safeNavigate { HyruleGraphDirections.toMonsterDetail(monster.id) }
         }
         observeMonsters()
     }
@@ -85,7 +87,9 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
                 }
                 ERROR -> {
                     hideProgress()
-                    navigate.toErrorDialog(result.message, navController)
+                    navController.safeNavigate {
+                        HyruleGraphDirections.toErrorDialog(extraMessage = result.message, extraRetry = true)
+                    }
                 }
                 LOADING -> showProgress()
             }

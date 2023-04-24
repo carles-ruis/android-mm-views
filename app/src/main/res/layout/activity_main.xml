@@ -16,6 +16,6 @@
         android:layout_height="match_parent"
         android:tag="fragment_nav_host"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/nav_graph" />
+        app:navGraph="@navigation/app_graph" />
 
 </androidx.appcompat.widget.LinearLayoutCompat>

@@ -8,13 +8,8 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.viewbinding.ViewBinding
-import com.carles.common.Navigate
-import javax.inject.Inject
 
 abstract class BaseFragment<T : ViewBinding> : Fragment() {
-
-    @Inject
-    lateinit var navigate: Navigate
 
     private var _binding: T? = null
     protected val binding get() = _binding!!
