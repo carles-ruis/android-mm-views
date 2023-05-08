@@ -5,7 +5,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.carles.common.ui.MutableResourceLiveData
 import com.carles.common.ui.ResourceLiveData
-import com.carles.common.ui.addTo
+import com.carles.common.ui.extensions.addTo
 import com.carles.common.ui.setError
 import com.carles.common.ui.setLoading
 import com.carles.common.ui.setSuccess

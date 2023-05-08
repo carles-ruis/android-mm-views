@@ -70,6 +70,9 @@ dependencies {
     implementation(Dependence.lifecycleLiveData)
 
     detektPlugins(Dependence.detekt)
+    debugImplementation(Dependence.stethoOkHttp)
+    debugImplementation(Dependence.loggingInterceptor)
+    debugImplementation(Dependence.chucker)
 
     Dependence.testImplementations.forEach(::testImplementation)
 }

@@ -1,4 +1,4 @@
-package com.carles.common.ui
+package com.carles.common.ui.extensions
 
 import android.content.res.Resources
 import android.os.Bundle

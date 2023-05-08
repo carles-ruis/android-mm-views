@@ -18,18 +18,21 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.carles.common.ui.BaseFragment
 import com.carles.common.ui.ERROR
 import com.carles.common.ui.LOADING
+import com.carles.common.ui.Navigate
 import com.carles.common.ui.SUCCESS
-import com.carles.common.ui.dp
-import com.carles.common.ui.safeNavigate
-import com.carles.hyrule.HyruleGraphDirections
+import com.carles.common.ui.extensions.dp
 import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonstersBinding
 import com.carles.hyrule.ui.ErrorDialogFragment.Companion.REQUEST_CODE_RETRY
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
+
+    @Inject
+    lateinit var navigate: Navigate
 
     private val viewModel: MonstersViewModel by viewModels()
 
@@ -55,7 +58,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
             }
         )
         binding.monstersRecycler.adapter = MonstersAdapter { monster ->
-            navController.safeNavigate { HyruleGraphDirections.toMonsterDetail(monster.id) }
+            navigate.toMonsterDetail(monster.id)
         }
         observeMonsters()
     }
@@ -87,9 +90,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
                 }
                 ERROR -> {
                     hideProgress()
-                    navController.safeNavigate {
-                        HyruleGraphDirections.toErrorDialog(extraMessage = result.message, extraRetry = true)
-                    }
+                    navigate.toErrorDialog(message = result.message ?: getString(R.string.error_server_response), retry = true)
                 }
                 LOADING -> showProgress()
             }

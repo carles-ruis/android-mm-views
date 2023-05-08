@@ -7,8 +7,8 @@ import com.carles.hyrule.data.local.HyruleDatabase
 import com.carles.hyrule.data.local.MonsterDao
 import com.carles.hyrule.data.remote.HyruleApi
 import com.carles.mm.api.FakeHyruleApi
-import com.carles.mm.di.CommonModule
-import com.carles.mm.di.HyruleProvideModule
+import com.carles.common.di.CommonModule
+import com.carles.hyrule.di.HyruleProvideModule
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext

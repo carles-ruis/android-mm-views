@@ -18,16 +18,20 @@ import com.bumptech.glide.request.target.Target
 import com.carles.common.ui.BaseFragment
 import com.carles.common.ui.ERROR
 import com.carles.common.ui.LOADING
+import com.carles.common.ui.Navigate
 import com.carles.common.ui.SUCCESS
-import com.carles.common.ui.safeNavigate
-import com.carles.hyrule.HyruleGraphDirections
 import com.carles.hyrule.MonsterDetail
+import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonsterDetailBinding
 import com.carles.hyrule.ui.ErrorDialogFragment.Companion.REQUEST_CODE_RETRY
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
+
+    @Inject
+    lateinit var navigate: Navigate
 
     private val viewModel: MonsterDetailViewModel by viewModels()
 
@@ -63,9 +67,7 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
                 }
                 ERROR -> {
                     hideProgress()
-                    navController.safeNavigate {
-                        HyruleGraphDirections.toErrorDialog(extraMessage = result.message, extraRetry = false)
-                    }
+                    navigate.toErrorDialog(result.message ?: getString(R.string.error_server_response))
                 }
                 LOADING -> showProgress()
             }

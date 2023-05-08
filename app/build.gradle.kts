@@ -77,11 +77,8 @@ dependencies {
     implementation(Dependence.roomRuntime)
 
     debugImplementation(Dependence.stetho)
-    debugImplementation(Dependence.stethoOkHttp)
     //debugImplementation(Dependence.leakCanary)
     detektPlugins(Dependence.detekt)
-    debugImplementation(Dependence.loggingInterceptor)
-    debugImplementation(Dependence.chucker)
 
     Dependence.testImplementations.forEach(::testImplementation)
     Dependence.androidTestImplementations.forEach(::androidTestImplementation)

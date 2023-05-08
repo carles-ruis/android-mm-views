@@ -1,4 +1,4 @@
-package com.carles.mm.di
+package com.carles.common.di
 
 import android.app.Application
 import com.carles.common.domain.AppSchedulers
