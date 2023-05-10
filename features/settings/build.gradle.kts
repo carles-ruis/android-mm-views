@@ -29,7 +29,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AppConfig.jvmTarget
     }
     buildFeatures {
         viewBinding = true
@@ -59,6 +59,5 @@ dependencies {
     implementation(Dependence.rxAndroid)
 
     detektPlugins(Dependence.detekt)
-
-    Dependence.testImplementations.forEach(::testImplementation)
+    TestDependence.testImplementations.forEach(::testImplementation)
 }

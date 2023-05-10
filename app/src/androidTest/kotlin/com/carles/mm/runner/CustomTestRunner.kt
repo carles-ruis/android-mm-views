@@ -1,4 +1,4 @@
-package com.carles.mm
+package com.carles.mm.runner
 
 import android.app.Application
 import android.content.Context

@@ -1,4 +1,4 @@
-package com.carles.mm.dao
+package com.carles.mm
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room

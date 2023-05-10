@@ -1,4 +1,4 @@
-package com.carles.mm.api
+package com.carles.mm.fakes
 
 val MONSTERS_DETAIL_133_RESPONSE_DTO = """
     {

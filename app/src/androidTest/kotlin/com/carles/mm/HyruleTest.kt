@@ -1,4 +1,4 @@
-package com.carles.mm.features
+package com.carles.mm
 
 import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
@@ -13,11 +13,9 @@ import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
-import com.carles.mm.CustomDrawableMatchers
-import com.carles.mm.CustomRecyclerViewMatchers.atPosition
-import com.carles.mm.CustomRecyclerViewMatchers.recyclerViewSize
-import com.carles.mm.MainActivity
-import com.carles.mm.R
+import com.carles.mm.matchers.CustomDrawableMatchers
+import com.carles.mm.matchers.CustomRecyclerViewMatchers.atPosition
+import com.carles.mm.matchers.CustomRecyclerViewMatchers.recyclerViewSize
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.hamcrest.CoreMatchers.not

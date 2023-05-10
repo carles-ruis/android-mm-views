@@ -33,8 +33,11 @@ class MonstersAdapter(private val onClick: (Monster) -> Unit) :
 
     inner class MonstersViewHolder(private val binding: ItemMonsterBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        init {
+            binding.root.setDebounceClickListener { onClick(getItem(layoutPosition)) }
+        }
+
         fun bind(item: Monster) {
-            binding.root.setDebounceClickListener { onClick(item) }
             binding.monsterTitle.text = item.name
         }
     }

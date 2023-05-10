@@ -1,4 +1,4 @@
-package com.carles.mm.api
+package com.carles.mm.fakes
 
 import com.carles.hyrule.data.remote.HyruleApi
 import com.carles.hyrule.data.remote.MonsterDetailResponseDto

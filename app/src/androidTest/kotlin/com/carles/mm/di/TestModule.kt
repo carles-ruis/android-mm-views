@@ -1,4 +1,4 @@
-package com.carles.mm
+package com.carles.mm.di
 
 import android.content.Context
 import androidx.room.Room
@@ -6,7 +6,7 @@ import com.carles.common.domain.AppSchedulers
 import com.carles.hyrule.data.local.HyruleDatabase
 import com.carles.hyrule.data.local.MonsterDao
 import com.carles.hyrule.data.remote.HyruleApi
-import com.carles.mm.api.FakeHyruleApi
+import com.carles.mm.fakes.FakeHyruleApi
 import com.carles.common.di.CommonModule
 import com.carles.hyrule.di.HyruleProvideModule
 import dagger.Module

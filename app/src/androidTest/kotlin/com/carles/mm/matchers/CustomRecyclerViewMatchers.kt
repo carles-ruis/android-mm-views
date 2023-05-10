@@ -1,4 +1,4 @@
-package com.carles.mm
+package com.carles.mm.matchers
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView

@@ -40,7 +40,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = AppConfig.jvmTarget
     }
     buildFeatures {
         viewBinding = true
@@ -68,7 +68,6 @@ dependencies {
     implementation(Dependence.material)
     implementation(Dependence.hilt)
     kapt(Dependence.hiltCompiler)
-
     implementation(Dependence.retrofit)
     implementation(Dependence.retrofitConverterGson)
     implementation(Dependence.retrofitRxJava)
@@ -80,14 +79,14 @@ dependencies {
     //debugImplementation(Dependence.leakCanary)
     detektPlugins(Dependence.detekt)
 
-    Dependence.testImplementations.forEach(::testImplementation)
-    Dependence.androidTestImplementations.forEach(::androidTestImplementation)
+    TestDependence.testImplementations.forEach(::testImplementation)
+    TestDependence.androidTestImplementations.forEach(::androidTestImplementation)
     androidTestImplementation(Dependence.rxJava)
     androidTestImplementation(Dependence.rxAndroid)
     androidTestImplementation(Dependence.gson)
     androidTestImplementation(Dependence.roomRuntime)
     kaptAndroidTest(Dependence.roomCompiler)
     androidTestImplementation(Dependence.roomRxJava)
-    androidTestImplementation(Dependence.hiltTest)
-    kaptAndroidTest(Dependence.hiltCompilerTest)
+    androidTestImplementation(TestDependence.hilt)
+    kaptAndroidTest(TestDependence.hiltCompiler)
 }

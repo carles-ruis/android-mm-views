@@ -1,4 +1,4 @@
-package com.carles.mm
+package com.carles.mm.matchers
 
 import android.view.View
 import android.widget.ImageView
@@ -17,6 +17,6 @@ private class HasDrawableMatcher : TypeSafeMatcher<View>() {
     }
 
     override fun matchesSafely(target: View): Boolean {
-       return (target as? ImageView)?.drawable != null
+        return (target as? ImageView)?.drawable != null
     }
 }
