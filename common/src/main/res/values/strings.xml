@@ -1,29 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- global strings -->
     <string name="appname">HYRULE MONSTERS</string>
     <string name="error_retry">RETRY</string>
-
-    <!-- non translatable strings -->
-    <string name="navigation_settings_deeplink" translatable="false">carles://settings</string>
-
-    <string name="ic_add_vector_path" translatable="false">M50 20,L50 80,M20 50,L80 50</string>
-    <string name="ic_check_vector_path" translatable="false">M60 25,L75 45,M25 75,L60 25</string>
-
-    <string name="preferences_cache_key" translatable="false">preferences_cache_key</string>
-    <string-array name="preferences_cache_values" translatable="false">
-        <item>0</item>
-        <item>1</item>
-        <item>10</item>
-        <item>999999999</item>
-    </string-array>
-    <string name="preferences_cache_default_value" translatable="false">1</string>
 
     <!-- hyrule module strings -->
     <string name="monsters_title">@string/appname</string>
     <string name="monsters_menu_settings">Settings</string>
     <string name="error_server_response">Error obtaining data from the server</string>
     <string name="monster_title" />
+    <string name="description_monster_image">Monster image</string>
+    <string name="tag_monster_image_loaded" translatable="false">Monster image loaded</string>
+    <string name="tag_monster_image_url" translatable="false">Monster image url</string>
 
     <!-- settings module strings -->
     <string name="settings">Settings</string>
@@ -40,5 +27,18 @@
         <item>@string/preferences_cache_ten_minutes</item>
         <item>@string/preferences_cache_never</item>
     </string-array>
+
+    <string name="preferences_cache_key" translatable="false">preferences_cache_key</string>
+    <string-array name="preferences_cache_values" translatable="false">
+        <item>0</item>
+        <item>1</item>
+        <item>10</item>
+        <item>999999999</item>
+    </string-array>
+    <string name="preferences_cache_default_value" translatable="false">1</string>
+
+    <!-- vector drawables -->
+    <string name="ic_add_vector_path" translatable="false">M50 20,L50 80,M20 50,L80 50</string>
+    <string name="ic_check_vector_path" translatable="false">M60 25,L75 45,M25 75,L60 25</string>
 
 </resources>

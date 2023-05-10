@@ -51,7 +51,7 @@
                 android:layout_height="260dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="16dp"
-                tools:ignore="ContentDescription" />
+                android:contentDescription="@string/description_monster_image" />
 
             <TextView
                 android:id="@+id/monster_image_url"
@@ -59,6 +59,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
+                android:tag="@string/tag_monster_image_url"
                 tools:text="@tools:sample/us_phones"
                 tools:visibility="visible" />
         </LinearLayout>

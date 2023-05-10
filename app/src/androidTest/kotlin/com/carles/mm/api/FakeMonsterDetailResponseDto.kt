@@ -14,7 +14,7 @@ val MONSTERS_DETAIL_133_RESPONSE_DTO = """
       "ancient core"
     ],
     "id": 133,
-    "image": "https://botw-compendium.herokuapp.com/api/v2/entry/guardian_scout_iv/image",
+    "image": "https://botw-compendium.herokuapp.com/api/v2/entry/guardian_scout_iv/imageerror",
     "name": "guardian scout iv"
   }
 }

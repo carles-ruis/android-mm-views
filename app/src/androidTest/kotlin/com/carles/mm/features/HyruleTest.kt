@@ -1,9 +1,11 @@
 package com.carles.mm.features
 
+import androidx.annotation.StringRes
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
+import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -53,6 +55,7 @@ class HyruleTest {
         onView(withId(R.id.main_toolbar)).check(matches(hasDescendant(withText("molduga"))))
         onView(withId(R.id.monster_locations)).check(matches(withText("Gerudo Desert")))
         onView(withId(R.id.monster_description)).check(matches(withText(startsWith("This massive monster swims"))))
+        waitUntilTagged(R.string.tag_monster_image_loaded)
         onView(withId(R.id.monster_image)).check(matches(CustomDrawableMatchers.hasDrawable()))
         onView(withId(R.id.monster_image_url)).check(matches(not(isDisplayed())))
         onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
@@ -61,14 +64,36 @@ class HyruleTest {
         onView(withId(R.id.main_toolbar)).check(matches(hasDescendant(withText(appName))))
         onView(withId(R.id.monsters_recycler))
             .perform(RecyclerViewActions.actionOnItem<RecyclerView.ViewHolder>(withText("guardian scout iv"), click()))
+
         // monster detail again, back and exit
         onView(withId(R.id.main_toolbar)).check(matches(hasDescendant(withText("guardian scout iv"))))
         onView(withId(R.id.monster_locations)).check(matches(withText("")))
+        waitUntilTagged(R.string.tag_monster_image_url)
+        onView(withId(R.id.monster_image_url)).check(
+            matches(withText("https://botw-compendium.herokuapp.com/api/v2/entry/guardian_scout_iv/imageerror"))
+        )
         Espresso.pressBack()
         Espresso.pressBackUnconditionally()
 
         val isDestroyed = activityRule.scenario.state == Lifecycle.State.RESUMED
         val isCreated = activityRule.scenario.state == Lifecycle.State.CREATED
         assertTrue(isDestroyed || isCreated)
+    }
+
+    private fun waitUntilTagged(@StringRes tagId: Int) {
+        val endTime = System.currentTimeMillis() + WAIT_TIMEOUT
+        var displayed = false
+        while (System.currentTimeMillis() < endTime && displayed.not()) {
+            try {
+                onView(withTagKey(tagId)).check(matches(isDisplayed()))
+                displayed = true
+            } catch (e: NoMatchingViewException) {
+                // keep on trying
+            }
+        }
+    }
+
+    companion object {
+        private const val WAIT_TIMEOUT = 3_000L
     }
 }

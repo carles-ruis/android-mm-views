@@ -89,6 +89,7 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
                     target: Target<Drawable?>?,
                     isFirstResource: Boolean
                 ): Boolean {
+                    binding.monsterImage.tag = null
                     binding.monsterImageUrl.visibility = VISIBLE
                     binding.monsterImageUrl.text = monster.image
                     return false
@@ -101,6 +102,7 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
+                    binding.monsterImage.tag = getString(R.string.tag_monster_image_loaded)
                     return false
                 }
             })
