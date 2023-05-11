@@ -16,10 +16,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.carles.common.ui.BaseFragment
-import com.carles.common.ui.ERROR
-import com.carles.common.ui.LOADING
 import com.carles.common.ui.Navigate
-import com.carles.common.ui.SUCCESS
 import com.carles.common.ui.extensions.dp
 import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonstersBinding
@@ -82,17 +79,17 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
     }
 
     private fun observeMonsters() {
-        viewModel.monsters.observe(viewLifecycleOwner) { result ->
-            when (result.state) {
-                SUCCESS -> {
+        viewModel.uiState.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                is MonstersState.Success -> {
                     hideProgress()
-                    (binding.monstersRecycler.adapter as MonstersAdapter).submitList(result.data)
+                    (binding.monstersRecycler.adapter as MonstersAdapter).submitList(state.monsters)
                 }
-                ERROR -> {
+                is MonstersState.Error -> {
                     hideProgress()
-                    navigate.toErrorDialog(message = result.message ?: getString(R.string.error_server_response), retry = true)
+                    navigate.toErrorDialog(message = state.message ?: getString(R.string.error_server_response), retry = true)
                 }
-                LOADING -> showProgress()
+                is MonstersState.Loading -> showProgress()
             }
         }
     }
