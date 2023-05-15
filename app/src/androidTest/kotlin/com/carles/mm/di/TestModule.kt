@@ -2,13 +2,13 @@ package com.carles.mm.di
 
 import android.content.Context
 import androidx.room.Room
+import com.carles.common.di.CommonModule
 import com.carles.common.domain.AppSchedulers
 import com.carles.hyrule.data.local.HyruleDatabase
 import com.carles.hyrule.data.local.MonsterDao
 import com.carles.hyrule.data.remote.HyruleApi
-import com.carles.mm.fakes.FakeHyruleApi
-import com.carles.common.di.CommonModule
 import com.carles.hyrule.di.HyruleProvideModule
+import com.carles.mm.fakes.FakeHyruleApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.android.qualifiers.ApplicationContext
@@ -22,7 +22,7 @@ import javax.inject.Singleton
     replaces = [CommonModule::class, HyruleProvideModule::class]
 )
 @Module
-class TestModule {
+object TestModule {
 
     @Provides
     @Singleton

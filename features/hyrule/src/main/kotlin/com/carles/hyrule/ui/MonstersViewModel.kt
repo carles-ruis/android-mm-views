@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.carles.common.ui.Navigate
 import com.carles.common.ui.extensions.addTo
 import com.carles.hyrule.Monster
 import com.carles.hyrule.domain.RefreshMonsters
@@ -19,7 +20,8 @@ sealed class MonstersState {
 
 @HiltViewModel
 class MonstersViewModel @Inject constructor(
-    private val refreshMonsters: RefreshMonsters
+    private val refreshMonsters: RefreshMonsters,
+    private val navigate: Navigate
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
@@ -50,5 +52,13 @@ class MonstersViewModel @Inject constructor(
 
     fun retry() {
         refreshMonsters()
+    }
+
+    fun onMonsterClicked(monster: Monster) {
+        navigate.toMonsterDetail(monster.id)
+    }
+
+    fun onErrorEvent(message: String) {
+        navigate.toErrorDialog(message, retry = true)
     }
 }

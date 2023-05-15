@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import com.carles.common.ui.MutableResourceLiveData
+import com.carles.common.ui.Navigate
 import com.carles.common.ui.ResourceLiveData
 import com.carles.common.ui.extensions.addTo
 import com.carles.common.ui.setError
@@ -19,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class MonsterDetailViewModel @Inject constructor(
     private val savedStateHandle: SavedStateHandle,
-    private val getMonsterDetail: GetMonsterDetail
+    private val getMonsterDetail: GetMonsterDetail,
+    private val navigate: Navigate
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
@@ -51,5 +53,9 @@ class MonsterDetailViewModel @Inject constructor(
 
     fun retry() {
         getMonsterDetail()
+    }
+
+    fun onErrorEvent(message: String) {
+        navigate.toErrorDialog(message)
     }
 }

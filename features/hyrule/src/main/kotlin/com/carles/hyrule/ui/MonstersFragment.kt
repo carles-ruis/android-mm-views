@@ -16,20 +16,15 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.onNavDestinationSelected
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.carles.common.ui.BaseFragment
-import com.carles.common.ui.Navigate
 import com.carles.common.ui.extensions.dp
 import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonstersBinding
 import com.carles.hyrule.ui.ErrorDialogFragment.Companion.REQUEST_CODE_RETRY
 import com.google.android.material.divider.MaterialDividerItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
-
-    @Inject
-    lateinit var navigate: Navigate
 
     private val viewModel: MonstersViewModel by viewModels()
 
@@ -55,7 +50,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
             }
         )
         binding.monstersRecycler.adapter = MonstersAdapter { monster ->
-            navigate.toMonsterDetail(monster.id)
+            viewModel.onMonsterClicked(monster)
         }
         observeMonsters()
     }
@@ -87,7 +82,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
                 }
                 is MonstersState.Error -> {
                     hideProgress()
-                    navigate.toErrorDialog(message = state.message ?: getString(R.string.error_server_response), retry = true)
+                    viewModel.onErrorEvent(state.message ?: getString(R.string.error_server_response))
                 }
                 is MonstersState.Loading -> showProgress()
             }
