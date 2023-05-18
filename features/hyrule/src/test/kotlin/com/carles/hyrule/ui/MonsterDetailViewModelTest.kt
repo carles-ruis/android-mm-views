@@ -77,7 +77,7 @@ class MonsterDetailViewModelTest {
         every { navigate.toErrorDialog(any()) } just Runs
 
         viewModel = MonsterDetailViewModel(state, getMonsterDetail, navigate)
-        viewModel.onErrorEvent(errorMessage)
+        viewModel.onErrorDisplayed(errorMessage)
 
         verify { navigate.toErrorDialog(errorMessage) }
     }

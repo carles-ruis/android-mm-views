@@ -6,6 +6,7 @@ plugins {
     id("kotlin-kapt")
     id("io.gitlab.arturbosch.detekt")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -81,12 +82,6 @@ dependencies {
 
     TestDependence.testImplementations.forEach(::testImplementation)
     TestDependence.androidTestImplementations.forEach(::androidTestImplementation)
-    androidTestImplementation(Dependence.rxJava)
-    androidTestImplementation(Dependence.rxAndroid)
-    androidTestImplementation(Dependence.gson)
-    androidTestImplementation(Dependence.roomRuntime)
-    kaptAndroidTest(Dependence.roomCompiler)
-    androidTestImplementation(Dependence.roomRxJava)
     androidTestImplementation(TestDependence.hilt)
     kaptAndroidTest(TestDependence.hiltCompiler)
 }

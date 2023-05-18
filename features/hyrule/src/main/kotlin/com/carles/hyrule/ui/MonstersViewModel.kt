@@ -58,7 +58,7 @@ class MonstersViewModel @Inject constructor(
         navigate.toMonsterDetail(monster.id)
     }
 
-    fun onErrorEvent(message: String) {
+    fun onErrorDisplayed(message: String) {
         navigate.toErrorDialog(message, retry = true)
     }
 }

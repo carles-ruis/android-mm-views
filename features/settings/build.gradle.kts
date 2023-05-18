@@ -6,6 +6,7 @@ plugins {
     id("kotlin-kapt")
     id("io.gitlab.arturbosch.detekt")
     id("com.google.dagger.hilt.android")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {

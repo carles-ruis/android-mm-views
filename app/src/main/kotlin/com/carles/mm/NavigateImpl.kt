@@ -4,6 +4,7 @@ import androidx.navigation.NavController
 import com.carles.common.ui.Navigate
 import com.carles.common.ui.extensions.safeNavigate
 import com.carles.hyrule.HyruleGraphDirections
+import com.carles.hyrule.ui.MonstersFragmentDirections
 import javax.inject.Inject
 
 class NavigateImpl @Inject constructor() : Navigate {
@@ -22,11 +23,15 @@ class NavigateImpl @Inject constructor() : Navigate {
 
     override fun toMonsterDetail(id: Int) {
         navController.safeNavigate {
-            HyruleGraphDirections.toMonsterDetail(id)
+            MonstersFragmentDirections.toMonsterDetail(id)
         }
     }
 
     override fun up() {
         navController.navigateUp()
+    }
+
+    override fun upTo(destination: Int) {
+        navController.popBackStack(destination, false)
     }
 }

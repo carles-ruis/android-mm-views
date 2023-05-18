@@ -1,11 +1,13 @@
 package com.carles.mm
 
 import androidx.annotation.StringRes
+import androidx.appcompat.widget.AppCompatImageButton
 import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.NoMatchingViewException
+import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
@@ -18,6 +20,8 @@ import com.carles.mm.matchers.CustomRecyclerViewMatchers.atPosition
 import com.carles.mm.matchers.CustomRecyclerViewMatchers.recyclerViewSize
 import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
+import org.hamcrest.CoreMatchers.allOf
+import org.hamcrest.CoreMatchers.instanceOf
 import org.hamcrest.CoreMatchers.not
 import org.hamcrest.CoreMatchers.startsWith
 import org.junit.Assert.assertTrue
@@ -56,7 +60,7 @@ class HyruleTest {
         waitUntilTagged(R.string.tag_monster_image_loaded)
         onView(withId(R.id.monster_image)).check(matches(CustomDrawableMatchers.hasDrawable()))
         onView(withId(R.id.monster_image_url)).check(matches(not(isDisplayed())))
-        onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click())
+        onNavigateUpView().perform(click())
 
         // monster screen again
         onView(withId(R.id.main_toolbar)).check(matches(hasDescendant(withText(appName))))
@@ -89,6 +93,10 @@ class HyruleTest {
                 // keep on trying
             }
         }
+    }
+
+    private fun onNavigateUpView(): ViewInteraction {
+        return onView(allOf(instanceOf(AppCompatImageButton::class.java), withParent(withId(R.id.main_toolbar))))
     }
 
     companion object {

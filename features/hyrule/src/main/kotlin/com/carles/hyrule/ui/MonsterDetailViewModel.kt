@@ -11,8 +11,8 @@ import com.carles.common.ui.setError
 import com.carles.common.ui.setLoading
 import com.carles.common.ui.setSuccess
 import com.carles.hyrule.MonsterDetail
+import com.carles.hyrule.R
 import com.carles.hyrule.domain.GetMonsterDetail
-import com.carles.hyrule.ui.MonsterDetailFragment.Companion.EXTRA_ID
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.disposables.CompositeDisposable
 import javax.inject.Inject
@@ -25,7 +25,7 @@ class MonsterDetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val disposables = CompositeDisposable()
-    private val id = savedStateHandle.get<Int>(EXTRA_ID) ?: 0
+    private val id = savedStateHandle.get<Int>(MonsterDetailFragment.EXTRA_ID) ?: 0
 
     private val _monsterDetail = MutableResourceLiveData<MonsterDetail>()
     val monsterDetail: ResourceLiveData<MonsterDetail> = _monsterDetail
@@ -55,7 +55,11 @@ class MonsterDetailViewModel @Inject constructor(
         getMonsterDetail()
     }
 
-    fun onErrorEvent(message: String) {
+    fun onErrorDisplayed(message: String) {
         navigate.toErrorDialog(message)
+    }
+
+    fun onErrorDismissed() {
+        navigate.upTo(R.id.monsters_destination)
     }
 }

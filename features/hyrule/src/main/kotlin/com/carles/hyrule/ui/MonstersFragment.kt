@@ -82,7 +82,7 @@ class MonstersFragment : BaseFragment<FragmentMonstersBinding>() {
                 }
                 is MonstersState.Error -> {
                     hideProgress()
-                    viewModel.onErrorEvent(state.message ?: getString(R.string.error_server_response))
+                    viewModel.onErrorDisplayed(state.message ?: getString(R.string.error_server_response))
                 }
                 is MonstersState.Loading -> showProgress()
             }

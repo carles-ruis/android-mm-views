@@ -7,7 +7,6 @@ import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResultListener
 import androidx.fragment.app.viewModels
 import com.bumptech.glide.Glide
@@ -22,6 +21,7 @@ import com.carles.common.ui.SUCCESS
 import com.carles.hyrule.MonsterDetail
 import com.carles.hyrule.R
 import com.carles.hyrule.databinding.FragmentMonsterDetailBinding
+import com.carles.hyrule.ui.ErrorDialogFragment.Companion.EXTRA_RETRY
 import com.carles.hyrule.ui.ErrorDialogFragment.Companion.REQUEST_CODE_RETRY
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -48,8 +48,12 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
     }
 
     private fun setResultListener() {
-        setFragmentResultListener(REQUEST_CODE_RETRY) { _, _ ->
-            viewModel.retry()
+        setFragmentResultListener(REQUEST_CODE_RETRY) { _, bundle ->
+            if (bundle.getBoolean(EXTRA_RETRY)) {
+                viewModel.retry()
+            } else {
+                viewModel.onErrorDismissed()
+            }
         }
     }
 
@@ -62,7 +66,7 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
                 }
                 ERROR -> {
                     hideProgress()
-                    viewModel.onErrorEvent(result.message ?: getString(R.string.error_server_response))
+                    viewModel.onErrorDisplayed(result.message ?: getString(R.string.error_server_response))
                 }
                 LOADING -> showProgress()
             }
@@ -106,6 +110,5 @@ class MonsterDetailFragment : BaseFragment<FragmentMonsterDetailBinding>() {
 
     companion object {
         const val EXTRA_ID = "extraId"
-        fun getBundle(id: Int) = bundleOf(EXTRA_ID to id)
     }
 }

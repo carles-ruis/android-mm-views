@@ -75,7 +75,7 @@ class MonstersViewModelTest {
         every { navigate.toErrorDialog(any(), any()) } just Runs
 
         viewModel = MonstersViewModel(refreshMonsters, navigate)
-        viewModel.onErrorEvent(errorMessage)
+        viewModel.onErrorDisplayed(errorMessage)
 
         verify { navigate.toErrorDialog(errorMessage, true) }
     }
