@@ -1,3 +1,11 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+    }
+}
+
 include("app", "hyrule", "common", "settings")
 rootProject.buildFileName = "build.gradle.kts"
 

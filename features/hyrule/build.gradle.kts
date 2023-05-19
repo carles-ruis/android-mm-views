@@ -1,21 +1,22 @@
 @file:Suppress("UnstableApiUsage")
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("io.gitlab.arturbosch.detekt")
-    id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs.kotlin")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
     namespace = "com.carles.hyrule"
-    compileSdk = AppConfig.compileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
 
         javaCompileOptions {
             annotationProcessorOptions {
@@ -36,7 +37,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = AppConfig.jvmTarget
+        jvmTarget = libs.versions.jvm.get()
     }
     buildFeatures {
         viewBinding = true
@@ -52,31 +53,26 @@ detekt {
 
 dependencies {
     implementation(project(":common"))
-    implementation(Dependence.kotlin)
-    implementation(Dependence.material)
-    implementation(Dependence.appCompat)
-    implementation(Dependence.recyclerview)
-    implementation(Dependence.constraintLayout)
-    implementation(Dependence.preference)
-    implementation(Dependence.navigation)
-    implementation(Dependence.navigationFragment)
-    implementation(Dependence.fragment)
-    implementation(Dependence.hilt)
-    kapt(Dependence.hiltCompiler)
-    implementation(Dependence.rxJava)
-    implementation(Dependence.rxAndroid)
-    implementation(Dependence.retrofit)
-    implementation(Dependence.retrofitConverterGson)
-    implementation(Dependence.retrofitRxJava)
-    implementation(Dependence.roomRuntime)
-    kapt(Dependence.roomCompiler)
-    implementation(Dependence.roomRxJava)
-    implementation(Dependence.lifecycleExtensions)
-    kapt(Dependence.lifecycleCompiler)
-    implementation(Dependence.lifecycleReactive)
-    implementation(Dependence.lifecycleLiveData)
-    implementation(Dependence.glide)
+    implementation(libs.kotlin)
+    implementation(libs.material)
+    implementation(libs.appcompat)
+    implementation(libs.recyclerview)
+    implementation(libs.constraintlayout)
+    implementation(libs.preference)
+    implementation(libs.bundles.navigation)
+    implementation(libs.fragment)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.room)
+    implementation(libs.room.rxjava)
+    kapt(libs.room.compiler)
+    implementation(libs.bundles.lifecycle)
+    kapt(libs.lifecycle.compiler)
+    implementation(libs.glide)
 
-    detektPlugins(Dependence.detekt)
-    TestDependence.testImplementations.forEach(::testImplementation)
+    detektPlugins(libs.detekt)
+    testImplementation(libs.bundles.test)
 }

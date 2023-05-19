@@ -1,25 +1,26 @@
 @file:Suppress("UnstableApiUsage")
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("io.gitlab.arturbosch.detekt")
-    id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs.kotlin")
+    alias(libs.plugins.android.application)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
     namespace = "com.carles.mm"
-    compileSdk = AppConfig.compileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
         applicationId = "com.carles.carleskotlin"
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
-        versionCode = AppConfig.versionCode
-        versionName = AppConfig.versionName
-        testInstrumentationRunner = AppConfig.testRunner
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
+        versionCode = 1
+        versionName = "1.0"
+        testInstrumentationRunner = "com.carles.mm.runner.CustomTestRunner"
     }
     buildTypes {
         getByName("release") {
@@ -41,7 +42,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = AppConfig.jvmTarget
+        jvmTarget = libs.versions.jvm.get()
     }
     buildFeatures {
         viewBinding = true
@@ -59,29 +60,25 @@ dependencies {
     implementation(project(":hyrule"))
     implementation(project(":settings"))
     implementation(project(":common"))
-    implementation(Dependence.kotlin)
-    implementation(Dependence.appCompat)
-    implementation(Dependence.constraintLayout)
-    implementation(Dependence.navigation)
-    implementation(Dependence.navigationFragment)
-    implementation(Dependence.fragment)
-    implementation(Dependence.splashScreen)
-    implementation(Dependence.material)
-    implementation(Dependence.hilt)
-    kapt(Dependence.hiltCompiler)
-    implementation(Dependence.retrofit)
-    implementation(Dependence.retrofitConverterGson)
-    implementation(Dependence.retrofitRxJava)
-    implementation(Dependence.rxJava)
-    implementation(Dependence.rxAndroid)
-    implementation(Dependence.roomRuntime)
+    implementation(libs.kotlin)
+    implementation(libs.appcompat)
+    implementation(libs.constraintlayout)
+    implementation(libs.bundles.navigation)
+    implementation(libs.fragment)
+    implementation(libs.splashscreen)
+    implementation(libs.material)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.bundles.retrofit)
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
+    implementation(libs.room)
 
-    debugImplementation(Dependence.stetho)
-    //debugImplementation(Dependence.leakCanary)
-    detektPlugins(Dependence.detekt)
-
-    TestDependence.testImplementations.forEach(::testImplementation)
-    TestDependence.androidTestImplementations.forEach(::androidTestImplementation)
-    androidTestImplementation(TestDependence.hilt)
-    kaptAndroidTest(TestDependence.hiltCompiler)
+    debugImplementation(libs.stetho)
+    //debugImplementation(libs.leakCanary)
+    detektPlugins(libs.detekt)
+    testImplementation(libs.bundles.test)
+    androidTestImplementation(libs.bundles.android.test)
+    androidTestImplementation(libs.test.hilt)
+    kaptAndroidTest(libs.test.hilt.compiler)
 }

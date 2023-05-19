@@ -1,21 +1,22 @@
 @file:Suppress("UnstableApiUsage")
 
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.library")
-    id("kotlin-android")
-    id("kotlin-kapt")
-    id("io.gitlab.arturbosch.detekt")
-    id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs.kotlin")
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.kapt)
+    alias(libs.plugins.detekt)
+    alias(libs.plugins.hilt)
+    alias(libs.plugins.navigation.safeargs)
 }
 
 android {
     namespace = "com.carles.settings"
-    compileSdk = AppConfig.compileSdk
+    compileSdk = libs.versions.compileSdk.get().toInt()
 
     defaultConfig {
-        minSdk = AppConfig.minSdk
-        targetSdk = AppConfig.targetSdk
+        minSdk = libs.versions.minSdk.get().toInt()
+        targetSdk = libs.versions.targetSdk.get().toInt()
     }
 
     sourceSets {
@@ -30,7 +31,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = AppConfig.jvmTarget
+        jvmTarget = libs.versions.jvm.get()
     }
     buildFeatures {
         viewBinding = true
@@ -46,19 +47,18 @@ detekt {
 
 dependencies {
     implementation(project(":common"))
-    implementation(Dependence.kotlin)
-    implementation(Dependence.appCompat)
-    implementation(Dependence.core)
-    implementation(Dependence.material)
-    implementation(Dependence.constraintLayout)
-    implementation(Dependence.preference)
-    implementation(Dependence.navigation)
-    implementation(Dependence.navigationFragment)
-    implementation(Dependence.hilt)
-    kapt(Dependence.hiltCompiler)
-    implementation(Dependence.rxJava)
-    implementation(Dependence.rxAndroid)
+    implementation(libs.kotlin)
+    implementation(libs.appcompat)
+    implementation(libs.core)
+    implementation(libs.material)
+    implementation(libs.constraintlayout)
+    implementation(libs.preference)
+    implementation(libs.bundles.navigation)
+    implementation(libs.hilt)
+    kapt(libs.hilt.compiler)
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid)
 
-    detektPlugins(Dependence.detekt)
-    TestDependence.testImplementations.forEach(::testImplementation)
+    detektPlugins(libs.detekt)
+    testImplementation(libs.bundles.test)
 }

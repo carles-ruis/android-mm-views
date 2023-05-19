@@ -1,23 +1,15 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-buildscript {
-    repositories {
-        google()
-        gradlePluginPortal()
-    }
-    dependencies {
-        classpath("com.android.tools.build:gradle:${Version.gradle}")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}")
-        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${Version.navigation}")
-    }
-}
-
+@Suppress("DSL_SCOPE_VIOLATION")
 plugins {
+    alias(libs.plugins.android.application).apply(false)
+    alias(libs.plugins.android.library).apply(false)
+    alias(libs.plugins.kotlin.android).apply(false)
+    alias(libs.plugins.kotlin.kapt).apply(false)
+    alias(libs.plugins.hilt).apply(false)
+
     // use: ./gradlew dependencyUpdates
-    id("com.github.ben-manes.versions").version(Version.benManes)
+    alias(libs.plugins.gradle.versions)
     // ./gradlew detekt
-    id("io.gitlab.arturbosch.detekt").version(Version.detekt)
-    // dependency injection
-    id("com.google.dagger.hilt.android").version(Version.hilt).apply(false)
+    alias(libs.plugins.detekt)
 }
 
 allprojects {
