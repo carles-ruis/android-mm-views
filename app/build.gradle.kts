@@ -77,6 +77,7 @@ dependencies {
     debugImplementation(libs.stetho)
     //debugImplementation(libs.leakCanary)
     detektPlugins(libs.detekt)
+
     testImplementation(libs.bundles.test)
     androidTestImplementation(libs.bundles.android.test)
     androidTestImplementation(libs.test.hilt)

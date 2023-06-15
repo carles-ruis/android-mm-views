@@ -1,6 +1,5 @@
 package com.carles.mm
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
@@ -10,16 +9,12 @@ import com.carles.hyrule.data.local.MonsterDetailEntity
 import com.carles.hyrule.data.local.MonsterEntity
 import org.junit.After
 import org.junit.Before
-import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
 
 @RunWith(AndroidJUnit4::class)
 class MonsterDaoTest {
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private lateinit var dao: MonsterDao
     private lateinit var database: HyruleDatabase
